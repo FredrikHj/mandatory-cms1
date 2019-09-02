@@ -1,0 +1,140 @@
+/* ============== Generall ============== */
+body{
+  background-color: lightgrey;
+}
+.navContainer{
+  padding: 0;
+  margin-bottom: 10px;
+}
+.page{
+  width: 100%;
+  margin-top: -25px;
+  color: black;
+}
+.navLinks{
+  margin: 2px;
+  font-size: 10px;
+}
+.errorMessContainer{
+  position: relative;
+  margin-top: -15px;
+  margin-bottom: -13px;
+  margin-left: 1px;
+  width: 158px;
+  font-size: 10px;
+  color: red;
+  font-weight: bold;
+}
+.errorMessText{
+  width: 150px;
+  margin-top: 15px;
+}
+
+/* Table style */
+#articles {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#articles td, #articles th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#articles tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#articles tr:hover{
+  background-color: #ddd;
+}
+
+#articles th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+/* ============== Main App ============== */
+#appBody{
+  margin-left: calc(50% - 300px);
+  margin-top: 10%;
+  width: 600px;
+  background-color: white;
+  border-radius: 30px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+main{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 30px;
+}
+#pagesHeadLine{
+  position: relative;
+  text-align: center;
+  width: 100%;
+  top: -110px;
+}
+#headLinks{
+  margin-top: 35px;
+}
+.headLine{
+  position: relative;
+  top: -10px;
+  left: 10%;
+  width: 90%;
+  text-align: center;
+  font-weight: bold;
+}
+/* ============== Main page ============== */
+#searchMovie{
+  position: relative;
+  top: -53px;
+  left: 50%;
+}
+/* ============== Add / Edit page ============== */
+.row1{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.row2{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+#directorContainer{
+  margin-left: 90px;
+}
+#descriptionContainer{
+  margin-left: 82px;
+}
+#description{
+  width: 250px;
+  height: 100px;
+  overflow-y: auto;
+}
+#formSubmitBtn{
+  position: relative;
+  top: -78px;
+  left: 403px;
+}
+/* ============== Details page ============== */
+.widthDesDet{
+  width: 262px;
+}
+#retunBtnToMain{
+  position: relative;
+  top: 9px;
+  left: 269px;
+}

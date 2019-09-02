@@ -1,0 +1,20 @@
+Cockpit path:
+cd b/Frontend_Webbutveckling/Webbutveckling_CMS/cms_labbredo/cmslabb1
+
+Adminsida:	http://192.168.99.100:8080/
+User:		admin
+Password:	admin
+
+Frontend i react JSX /cmslabb1
+
+API url:
+http://192.168.99.100:8080/api/collections/get/Artiklar
+http://192.168.99.100:8080/api/collections/get/Forfattare
+
+headers: { 'Cockpit-Token': 3dcadbb31033dd704673a595544b15}
+
+Start av docker Cocokpit backend:
+docker start e4ada2a066b6ea5bafe29399cf6178f1de0a320fe838dcbcadb9a33c205aa75b
+
+
+
