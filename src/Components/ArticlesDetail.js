@@ -13,8 +13,9 @@ export let ArticlesDetail = (props) => {
   useEffect(() => {
     console.log('vfd');
     
+    let articleNr = props.match.params.id;
     // Get Articles
-    axios.get('http://192.168.99.100:8080/api/collections/get/Artiklar', {
+    axios.get('http://192.168.99.100:8080/api/collections/get/Artiklar' + articleNr, {
         headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15}' }
     })
     .then(response => {
@@ -24,20 +25,12 @@ export let ArticlesDetail = (props) => {
     .catch((error) => {
         console.log(error);
     });
-  }, []);
-  console.log(incomminArticles);
-  
-  // Fix the patchname, will only get the blogg Nr
-  let articleIndex = props.location.pathname.split('/')[2]-1;
-  
-  
-  let article = incomminArticles[articleIndex];
-  console.log(article);
-  
-  let choosenTitle = article;
+  }, []);  
+  // Fix the choosen Articles title
+  let choosenTitle = incomminArticles.title;
 
   // Clean the data from comma
-  let cleanAuthor = article;//.author[0].display.split(',');
+  let cleanAuthor = incomminArticles.author[0].display.split(',');
 console.log(cleanAuthor);
 
   return(       
