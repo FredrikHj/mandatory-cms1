@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import axios from 'axios';
 
 export let ArticlesList = (props) => {
-  let showList = props.sendArticlesList;
+  let [ incomminArticles, setIncomminArticles ] = useState([]);
+/*   let showList = props.sendArticlesList;
+ */
+  useEffect(() =>{
+    console.log();
+    
+    // Get Articles
+    axios.get('http://192.168.99.100:8080/api/collections/get/Artiklar', {
+        headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15}' }
+    })
+    .then(response => {
+        console.log(response);
+        setIncomminArticles(response.data.entries);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+  }, []);
 
   return(
     <div className="page">
@@ -17,8 +35,8 @@ export let ArticlesList = (props) => {
         <tr><th>Titel</th><th>Författare</th><th>Datum</th></tr>
         </thead>
         <tbody>
-          {
-            showList.map((obj, articlesCount) => {
+           {
+            incomminArticles.map((obj, articlesCount) => {
               articlesCount += 1;
               // Clean the data from comma
               let cleanAuthor = obj.author[0].display.split(',');
