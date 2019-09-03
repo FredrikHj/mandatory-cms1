@@ -6,10 +6,30 @@ body{
   padding: 0;
   margin-bottom: 10px;
 }
+.inputWitdhSearch{
+  width: 100px;
+  height: 20px;
+}
 .page{
   width: 100%;
   margin-top: -25px;
   color: black;
+}
+#pagContainer{
+  position: relative;
+  top: -80px;
+  left: 250px;
+  width: 343px; 
+  text-align: right;
+}
+#articlesPagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.inputWitdh{
+  width: 50px;
+  height: 20px;
 }
 .navLinks{
   margin: 2px;
@@ -35,6 +55,7 @@ body{
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-top: -80px;
 }
 
 #articles td, #articles th {
