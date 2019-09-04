@@ -4,8 +4,6 @@ import axios from 'axios';
 
 export let ArticlesDetail = (props) => {
   let [ incommingArticle, setIncomminArticle ] = useState(null);
-  console.log(props);
-  
   useEffect(() => {
     let articleId = props.match.params.id;
 
@@ -14,11 +12,11 @@ export let ArticlesDetail = (props) => {
     headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15}' }
   })
     .then(response => {
-      console.log(response.data.entries[0]);
+      //console.log(response.data.entries[0]);
       setIncomminArticle(response.data.entries[0]);
     })
     .catch((error) => {
-        console.log(error);
+      //console.log(error);
     });
   }, []);  
  
@@ -28,8 +26,6 @@ export let ArticlesDetail = (props) => {
 
   // Fix the choosen Articles title
   let choosenTitle = incommingArticle.title;
-  console.log(choosenTitle);
-
   return(       
     <>
       <p className="headLine">{ 'Författarblogg - ' + choosenTitle }</p>
@@ -49,10 +45,10 @@ export let ArticlesDetail = (props) => {
               <td>{ incommingArticle.published_on }</td>
             </tr>
             <tr>
-              <th>Beskrivnning</th>
+              <th colSpan="10">Beskrivnning</th>
             </tr>
             <tr>
-                <td colSpan="1">{ incommingArticle.body}</td>
+                <td colSpan="10">{ incommingArticle.body}</td>
             </tr>
           </tbody>
         </table>

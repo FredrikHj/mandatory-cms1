@@ -1,0 +1,37 @@
+version: v1beta2
+images:
+  default:
+    image: dscr.io/${DEVSPACE_USERNAME}/devspace
+    createPullSecret: true
+deployments:
+- name: cmslabb1
+  component:
+    volumes:
+    - name: cockpit2
+      size: "1Gi"
+    containers:
+    - image: dscr.io/${DEVSPACE_USERNAME}/devspace
+      volumeMounts:
+      - containerPath: /var/www/html/storage
+        volume:
+          name: cockpit2
+          subPath: /storage
+          readOnly: false
+    service:
+      ports:
+      - port: 80
+dev:
+  overrideImages:
+  - name: default
+    entrypoint:
+    - sleep
+    - "999999999999"
+  ports:
+  - labelSelector:
+      app.kubernetes.io/component: cmslabb1
+    forward:
+    - port: 80
+  sync:
+  - labelSelector:
+      app.kubernetes.io/component: cmslabb1
+    excludePaths: []

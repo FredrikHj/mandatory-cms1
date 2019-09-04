@@ -33,9 +33,9 @@ class MainApp extends Component {
           <Route exact path="/Articles/:id" component={ ArticlesDetail }/>
           <Route exact path="/Authors/:id" component={ Authors }/>
         </div>
-      </Router>
+{/*         if (this.state.redirectList === true) return <Redirect to="/"/>;
+ */}      </Router>
     );
-    if (this.state.redirectList === true) return <Redirect to="/"/>;
   }
 }
 

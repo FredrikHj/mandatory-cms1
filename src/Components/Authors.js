@@ -9,33 +9,23 @@ export let Authors = (props) => {
   
   useEffect(() => {
     let authorId = props.match.params.id;
-    console.log(authorId);
-    
     // Get Author
     axios.get('http://192.168.99.100:8080/api/collections/get/Forfattare?filter[_id]=' + authorId, {
       headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15}' }
     })
     .then(response => {
-      console.log(response.data.entries[0]);
+      //console.log(response.data.entries[0]);
       setAuthor(response.data.entries[0])
     })
     .catch((error) => {
-      console.log(error);
+      //console.log(error);
     });
   }, []);
   if (!author) {
     return <p>hej</p>;
   }
-  // Fix the patchname, will only get the blogg Nr
-/*   let bloggNr = props.location.pathname;
-  let cleanedBloggNr = bloggNr.split('/')[2]-1;
-
-  let insertBloggData = props.sendAuthors[cleanedBloggNr];
-  console.log(insertBloggData);
- */  
   // Clean the data from comma
   let cleanAuthor = author.name.split(',')[0];
-  console.log(cleanAuthor);
   return(      
     <> 
       <p className="headLine">{ 'Författarblogg - ' + cleanAuthor}</p>

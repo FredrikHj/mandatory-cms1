@@ -10,9 +10,14 @@ body{
   width: 100px;
   height: 20px;
 }
+.pageArticleList{
+  position: relative;
+  width: 100%;
+  color: black;
+}
 .page{
   position: relative;
-/*   top: -25px; */
+  top: 66px;
   width: 100%;
   color: black;
 }
@@ -38,20 +43,6 @@ body{
 .navLinks{
   margin: 2px;
   font-size: 10px;
-}
-.errorMessContainer{
-  position: relative;
-  margin-top: -15px;
-  margin-bottom: -13px;
-  margin-left: 1px;
-  width: 158px;
-  font-size: 10px;
-  color: red;
-  font-weight: bold;
-}
-.errorMessText{
-  width: 150px;
-  margin-top: 15px;
 }
 
 /* Table style */
@@ -89,10 +80,27 @@ body{
   width: 600px;
   background-color: white;
   border-radius: 30px;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 20px;
+  padding: 5px 10px 97px 10px;
+}
+#listGetting{
+  position: relative;
+  top: -100px;
+  font-size: 25px;
+  text-align: center;
+}
+#headLinks{
+  margin-top: 35px;
+}
+.headLine{
+  position: relative;
+  top: -32px;
+  left: 10%;
+  width: 90%;
+  text-align: center;
+  font-weight: bold;
+}
+#inputContainer{
+  margin-top: -25px;
 }
 main{
   width: 100%;
@@ -108,17 +116,6 @@ main{
   text-align: center;
   width: 100%;
   top: -110px;
-}
-#headLinks{
-  margin-top: 35px;
-}
-.headLine{
-  position: relative;
-  top: -10px;
-  left: 10%;
-  width: 90%;
-  text-align: center;
-  font-weight: bold;
 }
 /* ============== Main page ============== */
 #searchMovie{
