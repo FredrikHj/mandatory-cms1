@@ -31,11 +31,7 @@ class MainApp extends Component {
          
           <Route exact path="/" component={ ArticlesList }/>
           <Route exact path="/Articles/:id" component={ ArticlesDetail }/>
-          <Route exact path="/Authors/:id" render={(props) => <Authors {...props}
-            sendAuthors={ this.state.incomminAuthors }
-            />}
-          />
-
+          <Route exact path="/Authors/:id" component={ Authors }/>
         </div>
       </Router>
     );

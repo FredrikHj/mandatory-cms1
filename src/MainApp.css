@@ -11,8 +11,9 @@ body{
   height: 20px;
 }
 .page{
+  position: relative;
+/*   top: -25px; */
   width: 100%;
-  margin-top: -25px;
   color: black;
 }
 #pagContainer{
@@ -26,6 +27,9 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.authorImg{
+  width: 100px;
 }
 .inputWitdh{
   width: 50px;
