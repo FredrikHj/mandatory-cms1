@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
+import { log } from 'util';
+import { reverse } from 'dns';
 
 export let ArticlesList = (props) => {
   let [ incommingArticles, setincommingArticles ] = useState([]);
-  let [ pagSkip, setPagSkip ] = useState(0);
-  let [ pagLimit, setPagLimit ] = useState(10);
+  let [ pageNr, setPageNr ] = useState(1);
+  let [ articlesPages, setArticlesPages ] = useState(5);
+
+  let [ pagSkip, setPagSkip ] = useState(1);
+  //let revSkip = 
+  let [ articlesLimit, setArticlesLimit ] = useState(100); // Appen are handle max 100 Articles
   let [ searchArticle, setSearchArticle ] = useState(' '); // Varför space. annars infogas inte data till tabellen?
+  
+  let pages = 0;
 
   useEffect(() =>{
     // Get Articles
     axios.get(
-      `https://cmslabb1.devspace.host/api/collections/get/Artiklar?skip=${pagSkip}&limit=${pagLimit}&sort[published_on]=-1`, {
+      `https://cmslabb1.devspace.host/api/collections/get/Artiklar?skip=${pagSkip}&limit=${articlesLimit}&sort[published_on]=-1`, {
         headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15' }
     })
     .then(response => {
@@ -30,27 +38,31 @@ export let ArticlesList = (props) => {
      return articleListData.title.includes(searchArticle)
     }
   )
+  function setPageDecrease() {
+    pages = pageNr - 1;
+
+    if (pages < 0) return;
+    else setPageNr(pages);
+  }
+  function setPageIncrease() {
+    pages = pageNr + 1;
+    setPageNr(pages);
+  }
+
   function articleSkip(e) {
     let targetNr = e.target.value;
     setPagSkip(targetNr);   
   }
-  function limitSide(e) {
+  function articlesLimitSide(e) {
     let targetNr = e.target.value;
-    setPagLimit(targetNr);
+    setArticlesPages(targetNr);
   }
-
+console.log(articlesPages);
   return(
     <>
       <p className="headLine">Författarblogg</p>
-      <section id="inputContainer">
+      <section id="inputSearchContainer">
         Sök artikel --> <input className="inputWitdhSearch" type="text" onChange={ inputSearchArticle }/><br/><br/>
-        <section id="pagContainer">
-          Visa endast<br/>
-          <section id="articlesPagination">
-            <p> Hoppa antal --> <input className="inputWitdh" type="number" onChange={ articleSkip }/></p> 
-            <p> Begränsa antal --> <input  className="inputWitdh" type="number" onChange={ limitSide }/></p> 
-          </section>
-        </section>
       </section>
       
       <div className="pageArticleList">
@@ -79,6 +91,14 @@ export let ArticlesList = (props) => {
             </tbody>
           </table >
         }
+        <section id="pageControlContainer">
+          <section id="setPageContainer">
+            <button onClick={ setPageDecrease }> - </button> <p id="sideNr">{ pageNr }</p> <button onClick={ setPageIncrease }>+</button>            
+          </section>
+          <section id="updatePagesArticlesContainer">
+            <p> Artiklar /sida</p> <input className="inputSideNr" type="number" onChange={ articlesLimitSide }/>
+          </section>   
+        </section>
       </div>
     </>
   );

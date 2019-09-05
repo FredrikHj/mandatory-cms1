@@ -48,7 +48,7 @@ export let ArticlesDetail = (props) => {
               <th colSpan="10">Beskrivnning</th>
             </tr>
             <tr>
-                <td colSpan="10">{ incommingArticle.body}</td>
+                <td id="articlesDes" colSpan="10">{ incommingArticle.body}</td>
             </tr>
           </tbody>
         </table>
