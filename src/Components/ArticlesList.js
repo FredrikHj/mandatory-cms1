@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 import { log } from 'util';
+import { logicalExpression } from '@babel/types';
 
 export let ArticlesList = (props) => {
   let [ incommingArticles, setincommingArticles ] = useState([]);
@@ -24,14 +25,14 @@ export let ArticlesList = (props) => {
         headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15' }
     })
     .then(response => {
-      console.log(response);
-        setincommingArticles(response.data.entries);
-        setArticlesTotal(response.data.total)
+      //console.log(response);
+      setincommingArticles(response.data.entries);
+      setArticlesTotal(response.data.total)
     })
     .catch((error) => {
       //console.log(error);
     });
-  }, [changeSkip]);
+  }, [articlesLimit, changeSkip]);
 
   function inputSearchArticle(e) {
     let targetArticle = e.target.value;
@@ -60,7 +61,13 @@ export let ArticlesList = (props) => {
       setChangeSkip(getIntoPage);
     }
   }
-console.log(incommingArticles.length+1);
+  function changeArticlesPage(e){
+    let targetNr = e.target.textContent
+    console.log(typeof targetNr);
+    if (targetNr === '4')  setArticlesLimit(4);
+    if (targetNr === '8')  setArticlesLimit(8);
+  }
+  console.log(articlesLimit);
   return(
     <>
       <p className="headLine">Författarblogg</p>
@@ -95,15 +102,12 @@ console.log(incommingArticles.length+1);
             </tbody>
           </table >
         }
+      </div>
         <section id="pageControlContainer">
           <section id="setPageContainer">
             <button onClick={ setPageDecrease }> - </button> <p id="sideNr">{ pageNr }</p> <button onClick={ setPageIncrease }>+</button>            
           </section>
-          <section id="updatePagesArticlesContainer">
-            <p> Artiklar /sida</p><span><botton>5</botton><botton>10</botton></span>
-          </section>
         </section>
-      </div>
     </>
   );
 }
