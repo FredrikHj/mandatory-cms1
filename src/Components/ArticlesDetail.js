@@ -51,7 +51,7 @@ export let ArticlesDetail = (props) => {
             </tr>
             <tr>
                 <td colSpan="10">
-                  <section id="articlesDes">
+                  <section id="articlesDes">  
                     <ReactMarkdown>{ incommingArticle.body}</ReactMarkdown>
                   </section>
                 </td>
