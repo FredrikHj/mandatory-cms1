@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
-import { log } from 'util';
-import { logicalExpression } from '@babel/types';
 
 export let ArticlesList = (props) => {
   let [ incommingArticles, setincommingArticles ] = useState([]);
   let [ articlesTotal, setArticlesTotal ] = useState(0);
   let [ pageNr, setPageNr ] = useState(1);
 
-  let [ articlesPages, setArticlesPages ] = useState(5);
   let [changeSkip, setChangeSkip ] = useState(0);
 
   //let revSkip = 
-  let [ articlesLimit, setArticlesLimit ] = useState(5); // Appen handle max 100 Articles
+  let [ articlesLimit ] = useState(5); // Article /Page
   let [ searchArticle, setSearchArticle ] = useState(' '); // Varför space. annars infogas inte data till tabellen?
   
   let pages = 1;
@@ -32,7 +29,7 @@ export let ArticlesList = (props) => {
     .catch((error) => {
       //console.log(error);
     });
-  }, [articlesLimit, changeSkip]);
+  }, [changeSkip]);
 
   function inputSearchArticle(e) {
     let targetArticle = e.target.value;
@@ -61,13 +58,6 @@ export let ArticlesList = (props) => {
       setChangeSkip(getIntoPage);
     }
   }
-  function changeArticlesPage(e){
-    let targetNr = e.target.textContent
-    console.log(typeof targetNr);
-    if (targetNr === '4')  setArticlesLimit(4);
-    if (targetNr === '8')  setArticlesLimit(8);
-  }
-  console.log(articlesLimit);
   return(
     <>
       <p className="headLine">Författarblogg</p>
