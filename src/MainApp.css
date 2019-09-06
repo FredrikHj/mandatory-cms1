@@ -21,7 +21,7 @@ body{
   margin-left: calc(50% - 300px);
   margin-top: 10%;
   width: 600px;
-  height: 40vh;
+  height: 250px;
   background-color: white;
   border-radius: 30px;
   padding-right: 10px;
@@ -84,6 +84,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center
 }
 .inputSideNr{
   margin-top: 12px;
@@ -96,14 +97,16 @@ body{
 #articlesDes{
   background-color: white;
   overflow-y: scroll;
-  height: 10vh;
+  height: 22vh;
 }
 
 /* ============== Authors ============== */
 .authorImg{
   width: 100px;
 }
-
+#authorsAll{
+  width: 100%;
+}
 /* ==============  Table style ============== */
 #articles {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;

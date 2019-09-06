@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom
 import { ArticlesDetail } from './Components/ArticlesDetail.js';
 import { ArticlesList } from './Components/ArticlesList.js';
 import { Authors } from './Components/Authors.js';
+import { AuthorsAll } from './Components/AuthorsAll.js'; 
 
 class MainApp extends Component {
   constructor(props) {
@@ -32,6 +33,8 @@ class MainApp extends Component {
           <Route exact path="/" component={ ArticlesList }/>
           <Route exact path="/Articles/:id" component={ ArticlesDetail }/>
           <Route exact path="/Authors/:id" component={ Authors }/>
+          <Route exact path="/AuthorsAll" component={ AuthorsAll }/>
+
         </div>
 {/*         if (this.state.redirectList === true) return <Redirect to="/"/>;
  */}      </Router>

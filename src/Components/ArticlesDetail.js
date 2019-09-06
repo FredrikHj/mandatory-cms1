@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Helmet} from "react-helmet";
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+
 
 export let ArticlesDetail = (props) => {
   let [ incommingArticle, setIncomminArticle ] = useState(null);
@@ -8,7 +10,7 @@ export let ArticlesDetail = (props) => {
     let articleId = props.match.params.id;
 
     // Get Articles
-    axios.get('http://192.168.99.100:8080/api/collections/get/Artiklar?filter[_id]=' + articleId, {
+    axios.get('https://cmslabb1.devspace.host/api/collections/get/Artiklar?filter[_id]=' + articleId, {
     headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15}' }
   })
     .then(response => {
@@ -21,7 +23,7 @@ export let ArticlesDetail = (props) => {
   }, []);  
  
   if (!incommingArticle) {
-    return <p>hej</p>;
+    return <p id="listGetting">Listan hämtas ...</p>;
   }
 
   // Fix the choosen Articles title
@@ -48,7 +50,11 @@ export let ArticlesDetail = (props) => {
               <th colSpan="10">Beskrivnning</th>
             </tr>
             <tr>
-                <td id="articlesDes" colSpan="10">{ incommingArticle.body}</td>
+                <td colSpan="10">
+                  <section id="articlesDes">
+                    <ReactMarkdown>{ incommingArticle.body}</ReactMarkdown>
+                  </section>
+                </td>
             </tr>
           </tbody>
         </table>

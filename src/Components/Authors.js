@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Helmet} from "react-helmet";
 import axios from 'axios';
-
-//import { updateCurrentIndex, currentIndex$ } from './Store.js';
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 export let Authors = (props) => {
   let [author, setAuthor ] = useState(null);    
@@ -10,7 +9,7 @@ export let Authors = (props) => {
   useEffect(() => {
     let authorId = props.match.params.id;
     // Get Author
-    axios.get('http://192.168.99.100:8080/api/collections/get/Forfattare?filter[_id]=' + authorId, {
+    axios.get('https://cmslabb1.devspace.host/api/collections/get/Forfattare?filter[_id]=' + authorId, {
       headers: { 'Cockpit-Token': '3dcadbb31033dd704673a595544b15}' }
     })
     .then(response => {
@@ -22,7 +21,7 @@ export let Authors = (props) => {
     });
   }, []);
   if (!author) {
-    return <p>hej</p>;
+    return <p id="listGetting">Listan hämtas ...</p>;
   }
   // Clean the data from comma
   let cleanAuthor = author.name.split(',')[0];
@@ -42,10 +41,13 @@ export let Authors = (props) => {
             <tr>
               <td>{ cleanAuthor }</td>
               <td>{ author.description }</td>
-              <td><img className="authorImg" src={'http://192.168.99.100:8080/' + author.avatar.path } alt="Ett porträtt"/></td>
+              <td><img className="authorImg" src={'https://cmslabb1.devspace.host/' + author.avatar.path } alt="Ett porträtt"/></td>
             </tr>
           </tbody>
         </table>
+        <section id="authorsAll">
+          <Link to={"/AuthorsAll" }> Alla Författare!</Link>
+        </section>
       </div>
     </>
   );
